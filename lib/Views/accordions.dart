@@ -8,32 +8,37 @@ class Accordions extends StatefulWidget {
 }
 
 class _AccordionsState extends State<Accordions> {
+
+  bool expanded = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 236, 235, 235),
 
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8,
-              horizontal: 12
-            ),
+      appBar: AppBar(
+        title: Text("Accordions Practice Screen"),
+      ),
+
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 12
+        ),
+        child: ListView(
+          children: [
             
-            child: Card(
+            Card(
               clipBehavior: Clip.antiAlias,
-
-              
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+                side: const BorderSide(
+                  color: Colors.white,
+                  width: 0
+                )
+              ),
+                    
+              // for ExpansionTile 
               child: ExpansionTile(
-
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)
-                ),
-                
-                backgroundColor: const Color.fromARGB(255, 206, 227, 238),
-                collapsedBackgroundColor: Colors.white,
-                leading: const Icon(Icons.shopping_bag),
+                leading: const Icon(Icons.shopping_bag_outlined),
                 title: const Text('Product Information'),
                 subtitle: const Text('View product details'),
               
@@ -57,8 +62,69 @@ class _AccordionsState extends State<Accordions> {
                 ],
               ),
             ),
-          ),
-        ],
+
+            SizedBox(height: 5),
+        
+        
+            // For ExpansionPanel
+            Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+                side: const BorderSide(
+                  color: Colors.white,
+                  width: 0
+                )
+              ),
+
+
+              child: ExpansionPanelList(
+
+                expansionCallback: (panelIndex, isExpanded) {
+                  setState(() {
+                    expanded = isExpanded;
+                  });
+                },
+                      
+                children: [
+                  ExpansionPanel(
+                    headerBuilder: (context, isExpanded) {
+                      return const ListTile(
+                        title: Text("Security Settings"),
+                        subtitle: Text("View security details"),
+                        leading: Icon(Icons.security),
+                      );
+                    },
+                      
+                    body: const Column(
+                      children: [
+                        ListTile(
+                          title: Text("Contact Info"),
+                          trailing: Icon(Icons.contacts_outlined),
+                        ),
+                      
+                        ListTile(
+                          title: Text("Change Password"),
+                          trailing: Icon(Icons.password_outlined),
+                        ),
+                      
+                        ListTile(
+                          title: Text("Two-Factor Authentication"),
+                          trailing: Icon(Icons.arrow_forward_ios),
+                        ),
+                      ],
+                    ),
+                      
+                    isExpanded: expanded,
+                    canTapOnHeader: true
+                  ),
+                ],
+              ),
+            ),
+            
+        
+          ],
+        ),
       ),
     );
   }

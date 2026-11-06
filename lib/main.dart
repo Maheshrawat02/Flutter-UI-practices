@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_mr/Views/FAQ_screen.dart';
 import 'package:practice_mr/Views/accordions.dart';
 import 'package:practice_mr/Views/home_view.dart';
 import 'package:practice_mr/Views/next.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       // home: const SampleScreen(),
       // home: const Next(),
       home: const Accordions(),
+      // home: const FAQScreen(),
     );
   }
 }

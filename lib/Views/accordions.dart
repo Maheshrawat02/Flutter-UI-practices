@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_mr/Views/Reusable_widgets/Resuable_ExpansionPanelList.dart';
 
 class Accordions extends StatefulWidget {
   const new({super.key});
@@ -66,61 +67,75 @@ class _AccordionsState extends State<Accordions> {
             SizedBox(height: 5),
         
         
-            // For ExpansionPanel
-            Card(
-              clipBehavior: Clip.antiAlias,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-                side: const BorderSide(
-                  color: Colors.white,
-                  width: 0
-                )
-              ),
+            // For ExpansionPanelList
+            ResuableExpansionpanellist(
 
+              panels: [
+                
+                // security panel
+                ReusableExpansionPanelItem(
+                  headerBuilder: (context, isExpanded) {
+                    return const ListTile(
+                      title: Text("Security Settings"),
+                      subtitle: Text("View security details"),
+                      leading: Icon(Icons.security),
+                    );
+                  }, 
 
-              child: ExpansionPanelList(
+                  body: Column(
+                    children: [
+                      ListTile(
+                        title: Text("Contact Info"),
+                        trailing: Icon(Icons.contacts_outlined),
+                      ),
 
-                expansionCallback: (panelIndex, isExpanded) {
-                  setState(() {
-                    expanded = isExpanded;
-                  });
-                },
-                      
-                children: [
-                  ExpansionPanel(
-                    headerBuilder: (context, isExpanded) {
-                      return const ListTile(
-                        title: Text("Security Settings"),
-                        subtitle: Text("View security details"),
-                        leading: Icon(Icons.security),
-                      );
-                    },
-                      
-                    body: const Column(
-                      children: [
-                        ListTile(
-                          title: Text("Contact Info"),
-                          trailing: Icon(Icons.contacts_outlined),
-                        ),
-                      
-                        ListTile(
-                          title: Text("Change Password"),
-                          trailing: Icon(Icons.password_outlined),
-                        ),
-                      
-                        ListTile(
-                          title: Text("Two-Factor Authentication"),
-                          trailing: Icon(Icons.arrow_forward_ios),
-                        ),
-                      ],
-                    ),
-                      
-                    isExpanded: expanded,
-                    canTapOnHeader: true
-                  ),
-                ],
-              ),
-            ),
+                       ListTile(
+                        title: Text("Change Password"),
+                        trailing: Icon(Icons.password_outlined),
+                      ),
+
+                       ListTile(
+                        title: Text("Two-Factor Authentication"),
+                        trailing: Icon(Icons.arrow_back_ios),
+                      ),
+
+                    ],
+                  )
+                ),
+
+                
+
+                ReusableExpansionPanelItem(
+                  headerBuilder: (context, isExpanded) {
+                    return const ListTile(
+                      title: Text("Security Settings"),
+                      subtitle: Text("View security details"),
+                      leading: Icon(Icons.security),
+                    );
+                  }, 
+
+                  body: Column(
+                    children: [
+                      ListTile(
+                        title: Text("Contact Info"),
+                        trailing: Icon(Icons.contacts_outlined),
+                      ),
+
+                       ListTile(
+                        title: Text("Change Password"),
+                        trailing: Icon(Icons.password_outlined),
+                      ),
+
+                       ListTile(
+                        title: Text("Two-Factor Authentication"),
+                        trailing: Icon(Icons.arrow_back_ios),
+                      ),
+
+                    ],
+                  )
+                ),
+              ],
+            )
             
         
           ],

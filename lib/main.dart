@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:practice_mr/Views/FAQ_screen.dart';
-import 'package:practice_mr/Views/accordions.dart';
+import 'package:practice_mr/Views/Accordions_Screen/FAQ_screen.dart';
+import 'package:practice_mr/Views/Accordions_Screen/accordions.dart';
+import 'package:practice_mr/Views/Checkbox_views/Checkbox_Screen.dart';
 import 'package:practice_mr/Views/home_view.dart';
 import 'package:practice_mr/Views/next.dart';
 import 'package:practice_mr/Views/sample_screen.dart';
@@ -21,11 +22,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      // home: const HomeView()
-      // home: const SampleScreen(),
-      // home: const Next(),
-      home: const Accordions(),
-      // home: const FAQScreen(),
+      
+      home: const CheckboxScreen(),
     );
   }
 }

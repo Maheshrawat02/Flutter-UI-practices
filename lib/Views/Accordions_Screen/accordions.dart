@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice_mr/Views/Reusable_widgets/Resuable_ExpansionPanelList.dart';
+import 'package:practice_mr/Views/Accordions_Screen/Reusable_widgets/Resuable_ExpansionPanelList.dart';
 
 class Accordions extends StatefulWidget {
   const new({super.key});
@@ -64,14 +64,14 @@ class _AccordionsState extends State<Accordions> {
                 ],
               ),
             ),
-
+              
             SizedBox(height: 5),
         
         
             // For ExpansionPanelList
             ReusableExpansionpanellist(
               panelSpacing: 20,
-
+              
               panels: [
                 
                 // security panel
@@ -83,30 +83,30 @@ class _AccordionsState extends State<Accordions> {
                       leading: Icon(Icons.security),
                     );
                   }, 
-
+              
                   body: Column(
                     children: [
                       ListTile(
                         title: Text("Contact Info"),
                         trailing: Icon(Icons.contacts_outlined),
                       ),
-
+              
                        ListTile(
                         title: Text("Change Password"),
                         trailing: Icon(Icons.password_outlined),
                       ),
-
+              
                        ListTile(
                         title: Text("Two-Factor Authentication"),
                         trailing: Icon(Icons.arrow_forward_ios),
                       ),
-
+              
                     ],
                   )
                 ),
-
+              
                 
-
+              
                 // Notification panel
                 ReusableExpansionPanelItem(
                   headerBuilder: (context, isExpanded) {
@@ -116,29 +116,29 @@ class _AccordionsState extends State<Accordions> {
                       leading: Icon(Icons.notifications),
                     );
                   }, 
-
+              
                   body: Column(
                     children: [
                       ListTile(
                         title: Text("Notification history"),
                         subtitle: Text("Show recent and snoozed notifications"),
                       ),
-
+              
                        ListTile(
                         title: Text("App notification"),
                         subtitle: Text("Control notification from individual apps"),
                       ),
-
+              
                        ListTile(
                         title: Text("Notifications on lock screen"),
                         subtitle: Text("Don't show any notifications"),
                       ),
-
+              
                     ],
                   )
                 ),
-
-
+              
+              
                 // Account panel -----> nested header
                 ReusableExpansionPanelItem(
                   headerBuilder: (context, inExpanded) {
@@ -149,11 +149,11 @@ class _AccordionsState extends State<Accordions> {
                   }, 
                   body: Column(
                     children: [
-
+              
                       ReusableExpansionpanellist(
-
+              
                         panels: [
-
+              
                           // Persional Info Panel
                           ReusableExpansionPanelItem(
                             headerBuilder: (context, isExpanded) {
@@ -171,18 +171,18 @@ class _AccordionsState extends State<Accordions> {
                                 ListTile(
                                   title: Text("Email: mrawat@gmail.com"),
                                 ),
-
+              
                                 ListTile(
                                   title: Text("Phone: 9800000000"),
                                 ),
-
+              
                               ],
                             ),
                           ),
-
+              
                           
-
-
+              
+              
                           // Network and internet panel
                           ReusableExpansionPanelItem(
                             headerBuilder: (context, isExpanded) {
@@ -197,19 +197,19 @@ class _AccordionsState extends State<Accordions> {
                                   subtitle: Text("Networks available"),
                                   leading: Icon(Icons.wifi_off),
                                 ),
-
+              
                                 ListTile(
                                   title: Text("SIMs"),
                                   subtitle: Text("Namaste"),
                                   leading: Icon(Icons.sim_card),
                                 ),
-
+              
                                 ListTile(
                                   title: Text("Hotspot and tethering"),
                                   subtitle: Text("Off"),
                                   leading: Icon(Icons.wifi_tethering),
                                 ),
-
+              
                                 ListTile(
                                   title: Text("Data Saver"),
                                   subtitle: Text("Off"),
@@ -219,17 +219,17 @@ class _AccordionsState extends State<Accordions> {
                               ],
                             ),
                           ),
-
+              
                         ], 
-
+              
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-
-
+              
+              
         
           ],
         ),

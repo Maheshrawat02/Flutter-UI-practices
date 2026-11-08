@@ -20,31 +20,31 @@ class ReusableExpansionPanelItem {
 
 
 
-class ResuableExpansionpanellist extends StatefulWidget {
+class ReusableExpansionpanellist extends StatefulWidget {
 
   final List<ReusableExpansionPanelItem> panels;
 
   final bool allowMultipleExpanded;
   final Duration animationDuration;
-  final void Function (int index, bool isExpanded)? onExpansionChanged;
+  // final void Function (int index, bool isExpanded)? onExpansionChanged;
   final double? panelSpacing;
 
-  const ResuableExpansionpanellist({
+  const ReusableExpansionpanellist({
     super.key,
     required this.panels,
 
     this.allowMultipleExpanded = true,
     this.animationDuration = const Duration(milliseconds: 200),
-    this.onExpansionChanged,
+    // this.onExpansionChanged,
     this.panelSpacing,
   });
 
 
   @override
-  State<ResuableExpansionpanellist> createState() => _ResuableExpansionpanellistState();
+  State<ReusableExpansionpanellist> createState() => _ResuableExpansionpanellistState();
 }
 
-class _ResuableExpansionpanellistState extends State<ResuableExpansionpanellist> {
+class _ResuableExpansionpanellistState extends State<ReusableExpansionpanellist> {
 
   late List<bool> expandedList; // late means I decleare expandedList now, I will initialize later
 
@@ -65,7 +65,7 @@ class _ResuableExpansionpanellistState extends State<ResuableExpansionpanellist>
   // later, your parent screen changes and now 3 panels, then problem accurs
   // problem is that old boolean list contains [false, false] and when 3 panels occurs, this creates a mismatch
   @override
-  void didUpdateWidget(covariant ResuableExpansionpanellist oldWidget) {
+  void didUpdateWidget(covariant ReusableExpansionpanellist oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if(oldWidget.panels.length != widget.panels.length) {
@@ -78,48 +78,73 @@ class _ResuableExpansionpanellistState extends State<ResuableExpansionpanellist>
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionPanelList(
-      animationDuration: widget.animationDuration,
+    return Column(
       
-    
-      expansionCallback: (panelIndex, isExpanded) {
-        setState(() {
-    
-          if (widget.allowMultipleExpanded) {
-    
-            expandedList[panelIndex] = isExpanded;
-    
-          } else {
-            for (int i = 0; i<expandedList.length; i++) {
-              expandedList[i] = false;
-            }
-    
-            expandedList[panelIndex] = !isExpanded;
-          }
-        });
-    
-      },
-    
-    
-      
-    
       children: List.generate(
         widget.panels.length,
         (index) {
-    
-          final panel = widget.panels[index];
           
-    
-          return ExpansionPanel(
-            headerBuilder: panel.headerBuilder,
-            body: panel.body,
-            isExpanded: expandedList[index],
-            canTapOnHeader: panel.canTapOnHeader,
-            backgroundColor: panel.backgroundColor,
-    
-          );
-        }
-      ) 
+          final panel = widget.panels[index];
+
+          return Padding(
+            padding: EdgeInsets.only(
+              bottom: index == widget.panels.length - 1 
+                ? 0 : (widget.panelSpacing ?? 0),
+            ),
+
+            child: ExpansionPanelList(
+              animationDuration: widget.animationDuration,
+
+              // // only one and multiple panels expanded
+
+              // expansionCallback: (panelIndex, isExpanded) {
+              //   setState(() {
+
+              //     if (widget.allowMultipleExpanded) {
+
+              //       expandedList[index] = !expandedList[index];
+
+              //     } else {
+              //       final shouldExpanded = !expandedList[index];
+
+              // // close all panels first
+              //       for (int i = 0; i<expandedList.length; i++) {
+              //         expandedList[i] = false;
+              //       }
+
+              // // Open or close the clicked panel
+              //       expandedList[index] = shouldExpanded;
+              //     }
+              //   });
+
+              // },
+
+
+              // multiple panels expanded
+              expansionCallback: (panelIndex, isExpanded) {
+                setState(() {
+                  
+                  if (widget.allowMultipleExpanded) {
+
+                    expandedList[index] = !expandedList[index];
+                  }
+                });
+              },
+
+              children: [
+                ExpansionPanel(
+                  headerBuilder: panel.headerBuilder, 
+                  body: panel.body,
+                  backgroundColor: panel.backgroundColor,
+                  canTapOnHeader: panel.canTapOnHeader,
+                  isExpanded: expandedList[index]
+                ),
+              ],
+
+
+            ),
+        );
+      }),
     );
   }
 }
@@ -128,8 +153,9 @@ class _ResuableExpansionpanellistState extends State<ResuableExpansionpanellist>
 
 
 
+// Practice myself
 
-// Practicing myself
+
 // import 'package:flutter/material.dart';
 
 

@@ -29,6 +29,7 @@ class _AccordionsState extends State<Accordions> {
             
             Card(
               clipBehavior: Clip.antiAlias,
+              margin: EdgeInsets.zero,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
                 side: const BorderSide(
@@ -68,7 +69,8 @@ class _AccordionsState extends State<Accordions> {
         
         
             // For ExpansionPanelList
-            ResuableExpansionpanellist(
+            ReusableExpansionpanellist(
+              panelSpacing: 20,
 
               panels: [
                 
@@ -135,9 +137,99 @@ class _AccordionsState extends State<Accordions> {
                     ],
                   )
                 ),
+
+
+                // Account panel -----> nested header
+                ReusableExpansionPanelItem(
+                  headerBuilder: (context, inExpanded) {
+                    return const ListTile(
+                      title: Text("Account Settings"),
+                      leading: Icon(Icons.settings_outlined),
+                    );
+                  }, 
+                  body: Column(
+                    children: [
+
+                      ReusableExpansionpanellist(
+
+                        panels: [
+
+                          // Persional Info Panel
+                          ReusableExpansionPanelItem(
+                            headerBuilder: (context, isExpanded) {
+                              return const ListTile(
+                                title: Text("Persional Information"),
+                                subtitle: Text("View yours full details"),
+                              );
+                            },
+                            body: Column(
+                              children: [
+                                ListTile(
+                                  title: Text("Name: M.Rawat"),
+                                ),
+                                
+                                ListTile(
+                                  title: Text("Email: mrawat@gmail.com"),
+                                ),
+
+                                ListTile(
+                                  title: Text("Phone: 9800000000"),
+                                ),
+
+                              ],
+                            ),
+                          ),
+
+                          
+
+
+                          // Network and internet panel
+                          ReusableExpansionPanelItem(
+                            headerBuilder: (context, isExpanded) {
+                              return const ListTile(
+                                title: Text("Network and Internet"),
+                              );
+                            },
+                            body: Column(
+                              children: [
+                                ListTile(
+                                  title: Text("Internet"),
+                                  subtitle: Text("Networks available"),
+                                  leading: Icon(Icons.wifi_off),
+                                ),
+
+                                ListTile(
+                                  title: Text("SIMs"),
+                                  subtitle: Text("Namaste"),
+                                  leading: Icon(Icons.sim_card),
+                                ),
+
+                                ListTile(
+                                  title: Text("Hotspot and tethering"),
+                                  subtitle: Text("Off"),
+                                  leading: Icon(Icons.wifi_tethering),
+                                ),
+
+                                ListTile(
+                                  title: Text("Data Saver"),
+                                  subtitle: Text("Off"),
+                                  leading: Icon(Icons.data_saver_off),
+                                ),
+                                
+                              ],
+                            ),
+                          ),
+
+                        ], 
+
+                      ),
+                    ],
+                  ),
+                ),
               ],
-            )
-            
+            ),
+
+
         
           ],
         ),

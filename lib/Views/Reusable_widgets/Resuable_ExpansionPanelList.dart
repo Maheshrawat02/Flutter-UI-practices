@@ -123,3 +123,112 @@ class _ResuableExpansionpanellistState extends State<ResuableExpansionpanellist>
     );
   }
 }
+
+
+
+
+
+
+// Practicing myself
+// import 'package:flutter/material.dart';
+
+
+// class ReusableExpansionPanelItem {
+//   final Widget Function(BuildContext, bool) headerBuilder;
+//   final Widget body;
+
+//   final Color? backgroundColor;
+//   final bool initiallyExpanded;
+//   final bool canTapOnHeader;
+
+//   const ReusableExpansionPanelItem ({
+//     required this.headerBuilder,
+//     required this.body,
+//     this.backgroundColor,
+//     this.initiallyExpanded = false,
+//     this.canTapOnHeader = true,
+//   });
+// }
+
+
+
+// class ResuableExpansionpanellist extends StatefulWidget {
+//   final List<ReusableExpansionPanelItem> panels;
+
+//   final Duration animationDuration;
+//   final bool allowMultipleExpanded;
+
+//   const ResuableExpansionpanellist({
+//     super.key,
+//     required this.panels,
+//     this.animationDuration = const Duration(milliseconds: 200),
+//     this.allowMultipleExpanded = true,
+
+//   });
+
+
+//   @override
+//   State<ResuableExpansionpanellist> createState() => _ResuableExpansionpanellistState();
+// }
+
+// class _ResuableExpansionpanellistState extends State<ResuableExpansionpanellist> {
+
+//   late List<bool> expandedList;
+
+//   @override
+//   void initState() {
+//     super.initState();
+
+//     expandedList = widget.panels.map((panel) =>
+//     panel.initiallyExpanded).toList();
+//   }
+
+//   @override
+//   void didUpdateWidget(covariant ResuableExpansionpanellist oldWidget) {
+//     super.didUpdateWidget(oldWidget);
+
+//     if (widget.panels.length != oldWidget.panels.length) {
+//       expandedList = widget.panels.map((panel) =>
+//       panel.initiallyExpanded).toList();
+//     }
+//   }
+
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ExpansionPanelList(
+//       animationDuration: widget.animationDuration,
+//       expansionCallback: (panelIndex, isExpanded) {
+//         setState(() {
+
+//           if (widget.allowMultipleExpanded) {
+//             expandedList[panelIndex] = isExpanded;
+//           } else {
+//             for (int i = 0; i < expandedList.length; i++) {
+//               expandedList[i] = false;
+//             }
+
+//             expandedList[panelIndex] = !isExpanded;
+//           }
+//         });
+//       },
+
+//       children: List.generate(
+//         widget.panels.length, 
+//         ((index) {
+          
+//           final panel = widget.panels[index];
+
+//           return ExpansionPanel(
+//             headerBuilder: panel.headerBuilder,
+//             body: panel.body,
+//             canTapOnHeader: panel.canTapOnHeader,
+//             isExpanded: expandedList[index],
+//             backgroundColor: panel.backgroundColor,
+            
+//           );
+
+//         })),
+//     );
+//   }
+// }

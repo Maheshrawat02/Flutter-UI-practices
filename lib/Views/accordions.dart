@@ -96,7 +96,7 @@ class _AccordionsState extends State<Accordions> {
 
                        ListTile(
                         title: Text("Two-Factor Authentication"),
-                        trailing: Icon(Icons.arrow_back_ios),
+                        trailing: Icon(Icons.arrow_forward_ios),
                       ),
 
                     ],
@@ -105,30 +105,31 @@ class _AccordionsState extends State<Accordions> {
 
                 
 
+                // Notification panel
                 ReusableExpansionPanelItem(
                   headerBuilder: (context, isExpanded) {
                     return const ListTile(
-                      title: Text("Security Settings"),
-                      subtitle: Text("View security details"),
-                      leading: Icon(Icons.security),
+                      title: Text("Notification Settings"),
+                      subtitle: Text("View notification details"),
+                      leading: Icon(Icons.notifications),
                     );
                   }, 
 
                   body: Column(
                     children: [
                       ListTile(
-                        title: Text("Contact Info"),
-                        trailing: Icon(Icons.contacts_outlined),
+                        title: Text("Notification history"),
+                        subtitle: Text("Show recent and snoozed notifications"),
                       ),
 
                        ListTile(
-                        title: Text("Change Password"),
-                        trailing: Icon(Icons.password_outlined),
+                        title: Text("App notification"),
+                        subtitle: Text("Control notification from individual apps"),
                       ),
 
                        ListTile(
-                        title: Text("Two-Factor Authentication"),
-                        trailing: Icon(Icons.arrow_back_ios),
+                        title: Text("Notifications on lock screen"),
+                        subtitle: Text("Don't show any notifications"),
                       ),
 
                     ],

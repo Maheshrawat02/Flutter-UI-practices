@@ -3,6 +3,7 @@ import 'package:practice_mr/Views/Accordions_Screen/FAQ_screen.dart';
 import 'package:practice_mr/Views/Accordions_Screen/accordions.dart';
 import 'package:practice_mr/Views/Checkbox_views/Checkbox_Screen.dart';
 import 'package:practice_mr/Views/Responsive_layout/media_query.dart';
+import 'package:practice_mr/Views/Responsive_layout/use_layout_builder.dart';
 import 'package:practice_mr/Views/home_view.dart';
 import 'package:practice_mr/Views/next.dart';
 import 'package:practice_mr/Views/sample_screen.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       
-      home: const Media7Query(),
+      home: const UseLayoutBuilder(),
     );
   }
 }

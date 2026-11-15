@@ -8,6 +8,7 @@ import 'package:practice_mr/Views/Responsive_layout/responsive_shop_screen.dart'
 import 'package:practice_mr/Views/Responsive_layout/use_expanded_flexible.dart';
 import 'package:practice_mr/Views/Responsive_layout/use_layout_builder.dart';
 import 'package:practice_mr/Views/home_view.dart';
+import 'package:practice_mr/Views/login_screen.dart';
 import 'package:practice_mr/Views/next.dart';
 import 'package:practice_mr/Views/sample_screen.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       //   colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       // ),
       
-      home: const ResponsiveShopScreen(),
+      home: const LoginScreen(),
     );
   }
 }

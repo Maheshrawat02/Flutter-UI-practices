@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:practice_mr/Views/ButtomNavigationBar/home_screen.dart';
 import 'package:practice_mr/Views/color_date_picker/color_picker_screen.dart';
+import 'package:practice_mr/Views/color_date_picker/date_picker_screen.dart';
 
 
 void main() {
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       //   colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       // ),
       
-      home: const ColorPickerScreen(),
+      home: const HomeScreen(),
     );
   }
 }
